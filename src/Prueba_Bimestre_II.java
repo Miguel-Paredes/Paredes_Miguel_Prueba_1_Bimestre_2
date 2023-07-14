@@ -33,13 +33,26 @@ public class Prueba_Bimestre_II {
     private JButton anterior;
 
     public static void main(String[] args) {
-        /*JFrame frame = new JFrame("Prueba_Bimestre_II");
+        JFrame frame = new JFrame("Prueba_Bimestre_II");
+        Prueba_Bimestre_II formulario = new Prueba_Bimestre_II();
         frame.setContentPane(new Prueba_Bimestre_II().JPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setVisible(true);*/
+        frame.setVisible(true);
         String filePath="data.dat";
-        estudiantes alumno = new estudiantes(202121519,1726744327,"Miguel","Paredes","Libra","2003","10","18","rojo","no");
+        estudiantes alumno = new estudiantes(formulario.es_ced.getWidth(),
+                                             formulario.es_ced.getColumns(),
+                                             formulario.es_nom.getText(),
+                                             formulario.es_apel.getText(),
+                                             formulario.zigno.getActionCommand(),
+                                             formulario.anio.getActionCommand(),
+                                             formulario.mes.getActionCommand(),
+                                             formulario.dia.getActionCommand(),
+                                             formulario.rojo.getText(),
+                                             formulario.verde.getText(),
+                                             formulario.niguno.getText(),
+                                             formulario.si.getText(),
+                                             formulario.no.getText());
         try (FileOutputStream fileOut=new FileOutputStream(filePath);
              ObjectOutputStream obOut=new ObjectOutputStream(fileOut);){
             obOut.writeObject(alumno);
@@ -59,4 +72,7 @@ public class Prueba_Bimestre_II {
         catch (ClassNotFoundException e){
             throw new RuntimeException();}
     }
+
+
 }
+
