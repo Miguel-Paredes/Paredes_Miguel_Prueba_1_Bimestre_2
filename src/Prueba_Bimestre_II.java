@@ -1,8 +1,11 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
 
 public class Prueba_Bimestre_II {
     private JLabel estudiantes;
-    private JPanel Jpanel;
+    private JPanel JPanel;
     private JLabel codigo;
     private JLabel cedula;
     private JLabel nombre;
@@ -29,13 +32,11 @@ public class Prueba_Bimestre_II {
     private JButton siguiente;
     private JButton anterior;
 
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("Prueba_Bimestre_II");
-        frame.setContentPane(new Prueba_Bimestre_II().Jpanel);
+        frame.setContentPane(new Prueba_Bimestre_II().JPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
-
 }
