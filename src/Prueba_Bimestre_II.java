@@ -33,10 +33,30 @@ public class Prueba_Bimestre_II {
     private JButton anterior;
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Prueba_Bimestre_II");
+        /*JFrame frame = new JFrame("Prueba_Bimestre_II");
         frame.setContentPane(new Prueba_Bimestre_II().JPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setVisible(true);
+        frame.setVisible(true);*/
+        String filePath="data.dat";
+        estudiantes alumno = new estudiantes(202121519,1726744327,"Miguel","Paredes","Libra","2003","10","18","rojo","no");
+        try (FileOutputStream fileOut=new FileOutputStream(filePath);
+             ObjectOutputStream obOut=new ObjectOutputStream(fileOut);){
+            obOut.writeObject(alumno);
+            System.out.println("archivo escrito correctamente");}
+
+        catch(IOException e){
+            throw new RuntimeException(e);}
+
+        try(FileInputStream fileIn=new FileInputStream(filePath);
+            ObjectInputStream objIn= new ObjectInputStream(fileIn);){
+            estudiantes readObject=(estudiantes) objIn.readObject();
+            System.out.println("El objeto en disco es: \n"+readObject);}
+
+        catch(IOException e){
+            throw new RuntimeException(e);}
+
+        catch (ClassNotFoundException e){
+            throw new RuntimeException();}
     }
 }

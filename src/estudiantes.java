@@ -1,33 +1,28 @@
-public class estudiantes {
+import java.io.Serializable;
+
+public class estudiantes implements Serializable {
     int codigo;
     int cedula;
     String nombres;
-    String Apellido;
-    String Signo;
+    String apellido;
+    String signo;
     String anio;
     String mes;
     String dia;
-    String rojo;
-    String verde;
-    String ninguno;
-    String si;
-    String no;
-
-    public estudiantes(){}
-    public estudiantes(int codigo, int cedula, String nombres, String apellido, String signo, String anio, String mes, String dia, String rojo, String verde, String ninguno, String si, String no) {
+    String color;
+    String casado;
+    private static final long serialVersionUID=1L;
+    public estudiantes(int codigo, int cedula, String nombres, String apellido, String signo, String anio, String mes, String dia, String color, String casado) {
+        this.nombres = nombres;
         this.codigo = codigo;
         this.cedula = cedula;
-        this.nombres = nombres;
-        Apellido = apellido;
-        Signo = signo;
+        this.apellido = apellido;
+        this.signo = signo;
         this.anio = anio;
         this.mes = mes;
         this.dia = dia;
-        this.rojo = rojo;
-        this.verde = verde;
-        this.ninguno = ninguno;
-        this.si = si;
-        this.no = no;
+        this.color = color;
+        this.casado = casado;
     }
 
     public int getCodigo() {
@@ -55,19 +50,19 @@ public class estudiantes {
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public void setApellido(String apellido) {
-        Apellido = apellido;
+        apellido = apellido;
     }
 
     public String getSigno() {
-        return Signo;
+        return signo;
     }
 
     public void setSigno(String signo) {
-        Signo = signo;
+        signo = signo;
     }
 
     public String getAnio() {
@@ -94,43 +89,23 @@ public class estudiantes {
         this.dia = dia;
     }
 
-    public String getRojo() {
-        return rojo;
+    public String getColor() {
+        return color;
     }
 
-    public void setRojo(String rojo) {
-        this.rojo = rojo;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public String getVerde() {
-        return verde;
+    public String getCasado() {
+        return casado;
     }
 
-    public void setVerde(String verde) {
-        this.verde = verde;
+    public void setCasado(String casado) {
+        this.casado = casado;
     }
-
-    public String getNinguno() {
-        return ninguno;
-    }
-
-    public void setNinguno(String ninguno) {
-        this.ninguno = ninguno;
-    }
-
-    public String getSi() {
-        return si;
-    }
-
-    public void setSi(String si) {
-        this.si = si;
-    }
-
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no;
+    @Override
+    public String toString(){
+        return "Codigo:"+codigo+"\nCedula:"+cedula+"\nNombre: "+nombres+"\nApellido: "+apellido+"\nAño: "+anio+"\nMes: "+mes+"\nDía: "+dia+"\nColor: "+color+"\nCasado: "+casado;
     }
 }
