@@ -32,6 +32,66 @@ public class Prueba_Bimestre_II {
     private JButton siguiente;
     private JButton anterior;
 
+    public Prueba_Bimestre_II() {
+        guardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Prueba_Bimestre_II formulario = new Prueba_Bimestre_II();
+                String filePath="data.dat";
+                estudiantes alumno = new estudiantes(formulario.es_ced.getWidth(),
+                        formulario.es_ced.getColumns(),
+                        formulario.es_nom.getText(),
+                        formulario.es_apel.getText(),
+                        formulario.zigno.getActionCommand(),
+                        formulario.anio.getActionCommand(),
+                        formulario.mes.getActionCommand(),
+                        formulario.dia.getActionCommand(),
+                        formulario.rojo.getText(),
+                        formulario.verde.getText(),
+                        formulario.niguno.getText(),
+                        formulario.si.getText(),
+                        formulario.no.getText());
+                try (FileOutputStream fileOut=new FileOutputStream(filePath);
+                     ObjectOutputStream obOut=new ObjectOutputStream(fileOut);){
+                    obOut.writeObject(alumno);
+                    System.out.println("archivo escrito correctamente");}
+
+                catch(IOException a){
+                    throw new RuntimeException(a);}
+            }
+        });
+        cargar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Prueba_Bimestre_II formulario = new Prueba_Bimestre_II();
+                String filePath="data.dat";
+                estudiantes alumno = new estudiantes(formulario.es_ced.getWidth(),
+                        formulario.es_ced.getColumns(),
+                        formulario.es_nom.getText(),
+                        formulario.es_apel.getText(),
+                        formulario.zigno.getActionCommand(),
+                        formulario.anio.getActionCommand(),
+                        formulario.mes.getActionCommand(),
+                        formulario.dia.getActionCommand(),
+                        formulario.rojo.getText(),
+                        formulario.verde.getText(),
+                        formulario.niguno.getText(),
+                        formulario.si.getText(),
+                        formulario.no.getText());
+                try(FileInputStream fileIn=new FileInputStream(filePath);
+                    ObjectInputStream objIn= new ObjectInputStream(fileIn);){
+                    estudiantes readObject=(estudiantes) objIn.readObject();
+                    System.out.println("El objeto en disco es: \n"+readObject);}
+
+                catch(IOException a){
+                    throw new RuntimeException(a);}
+
+                catch (ClassNotFoundException a){
+                    throw new RuntimeException();}
+            }
+        });
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Prueba_Bimestre_II");
         Prueba_Bimestre_II formulario = new Prueba_Bimestre_II();
@@ -39,7 +99,7 @@ public class Prueba_Bimestre_II {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        String filePath="data.dat";
+        /*String filePath="data.dat";
         estudiantes alumno = new estudiantes(formulario.es_ced.getWidth(),
                                              formulario.es_ced.getColumns(),
                                              formulario.es_nom.getText(),
@@ -71,7 +131,7 @@ public class Prueba_Bimestre_II {
 
         catch (ClassNotFoundException e){
             throw new RuntimeException();}
-
+*/
     }
 
 
